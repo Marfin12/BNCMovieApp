@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardSport"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    android:elevation="10dp"
+    app:cardCornerRadius="8dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <ImageView
+        android:id="@+id/iv_movie"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:background="@color/cardview_dark_background"
+        android:scaleType="fitXY"
+        android:src="@drawable/di"
+        android:contentDescription="missing"
+        tools:ignore="PrivateResource" />
+
+    <ImageView
+        android:id="@+id/iv_favorite_image"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/ic_unfavorite_foreground"
+        android:layout_marginTop="160dp"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/image_description"
+        app:layout_constraintBottom_toBottomOf="@+id/incSportImage"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.cardview.widget.CardView>
