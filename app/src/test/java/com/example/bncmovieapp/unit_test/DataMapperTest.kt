@@ -17,97 +17,122 @@ import com.example.bncmovieapp.core.utils.DataMapper.mapSessionDomainToEntity
 import com.example.bncmovieapp.core.utils.DataMapper.mapSessionEntityToDomain
 import com.example.bncmovieapp.core.utils.DataMapper.mapSessionResponsesToEntities
 import org.junit.Assert.assertEquals
-import org.junit.Assert.assertTrue
 import org.junit.Test
 
-val session = Session(
-    token = "abcdefgh"
-)
-val sessionEntity = SessionEntity(
-    token = "abcdefgh"
-)
-val sessionResponse = UserResponse(
-    token = "abcdefgh"
-)
-val movieEntity = MovieEntity(
-    "1",
-    "movie_title",
-    "2021",
-    "4",
-    "",
-    "horror",
-    "this is movie",
-    arrayListOf(),
-    "60 minute"
-)
-val movie = Movie(
-    "1",
-    "movie_title",
-    "2021",
-    "4",
-    "",
-    false,
-    "this is movie",
-    arrayListOf(),
-    "horror",
-    "60 minute"
-)
-val movieResponse = MovieResponse(
-    "1",
-    "movie_title",
-    "2021",
-    "4",
-    ""
-)
-val detailResponse = DetailResponse(
-    "1",
-    "movie_title",
-    "2021",
-    "4",
-    "",
-    "this is movie",
-    arrayListOf(),
-    "horror",
-    "60 minute"
-)
+class DataMapperTest {
 
-@Test
-fun mapResponsesToEntities_EqualTo_ListOfMovieEntity() {
-    val listMovieEntity = mapResponsesToEntities(arrayListOf(movieResponse))
-    assertEquals(listMovieEntity, arrayListOf(movieEntity))
-}
+    val session = Session(
+        token = "abcdefgh"
+    )
+    val sessionEntity = SessionEntity(
+        token = "abcdefgh"
+    )
+    val sessionResponse = UserResponse(
+        token = "abcdefgh"
+    )
+    val movieEntity = MovieEntity(
+        "1",
+        "movie_title",
+        "2021",
+        "4",
+        "",
+        "horror",
+        "this is movie",
+        arrayListOf(),
+        "60 minute"
+    )
+    val movie = Movie(
+        "1",
+        "movie_title",
+        "2021",
+        "4",
+        "",
+        false,
+        "this is movie",
+        arrayListOf(),
+        "horror",
+        "60 minute"
+    )
+    val movieResponse = MovieResponse(
+        "1",
+        "movie_title",
+        "2021",
+        "4",
+        ""
+    )
+    val mockedMovieEntity = MovieEntity(
+        "1",
+        "movie_title",
+        "2021",
+        "4",
+        "",
+        "",
+        "",
+        arrayListOf(),
+        ""
+    )
+    val detailResponse = DetailResponse(
+        "1",
+        "movie_title",
+        "2021",
+        "4",
+        "",
+        "this is movie",
+        arrayListOf(),
+        "horror",
+        "60 minute"
+    )
 
-@Test fun mapDomainToEntity_EqualTo_MovieEntity() {
-    val mockedMovieEntity = mapDomainToEntity(movie)
-    assertEquals(mockedMovieEntity, movieEntity)
-}
+    @Test
+    fun mapResponsesToEntities_EqualTo_ListOfMovieEntity() {
+        val listMovieEntity = mapResponsesToEntities(arrayListOf(movieResponse))
+        assertEquals(listMovieEntity, arrayListOf(mockedMovieEntity))
+    }
 
-@Test fun mapSessionDomainToEntity_EqualTo_SessionEntity() {
-    val mockedSessionEntity = mapSessionDomainToEntity(session)
-    assertEquals(mockedSessionEntity, sessionEntity)
-}
+    @Test
+    fun mapDomainToEntity_EqualTo_MovieEntity() {
+        val mockedMovieEntity = mapDomainToEntity(movie)
+        assertEquals(mockedMovieEntity, movieEntity)
+    }
 
-@Test fun mapSessionResponsesToEntities_EqualTo_SessionEntity() {
+    @Test
+    fun mapSessionDomainToEntity_EqualTo_SessionEntity() {
+        val mockedSession = mapSessionDomainToEntity(session)
+        assertEquals(mockedSession, sessionEntity)
+    }
 
-    assertTrue(mapSessionResponsesToEntities(sessionResponse) === sessionEntity)
-}
+    @Test
+    fun mapSessionResponsesToEntities_EqualTo_SessionEntity() {
+        val mockedSessionResponse = mapSessionResponsesToEntities(sessionResponse)
+        assertEquals(mockedSessionResponse, sessionEntity)
+    }
 
-@Test fun emailValidator_InvalidEmailNoUsername_ReturnsTrue() {
-    assertTrue(mapDetailResponsesToEntities(detailResponse) === movieEntity)
-}
+    @Test
+    fun mapDetailResponsesToEntities_EqualTo_MovieEntity() {
+        val mockedDetailResponse = mapDetailResponsesToEntities(detailResponse)
+        assertEquals(mockedDetailResponse, movieEntity)
+    }
 
-@Test fun emailValidator_InvalidEmailNoUsername_ReturnsFalse() {
-    assertTrue(mapEntitiesToDomain(arrayListOf(movieEntity)) === arrayListOf(movie))
-}
+    @Test
+    fun mapSessionEntityToDomain_EqualTo_Session() {
+        val mockedSessionEntity = mapSessionEntityToDomain(sessionEntity)
+        assertEquals(mockedSessionEntity, session)
+    }
 
-@Test fun emailValidator_InvalidEmailNoUsername_ReturnsFalse2() {
-    assertTrue(mapSessionEntityToDomain(sessionEntity) === session)
-}
+    @Test
+    fun mapEntitiesToDomain_EqualTo_ListOfMovie() {
+        val mockedMovieEntity = mapEntitiesToDomain(arrayListOf(movieEntity))
+        assertEquals(mockedMovieEntity, arrayListOf(movie))
+    }
 
-@Test fun emailValidator_InvalidEmailNoUsername_ReturnsFalse3() {
-    assertTrue(mapEntityToDomain(movieEntity) === movie)
-}
+    @Test
+    fun mapEntityToDomain_EqualTo_MovieEntity() {
+        val mockedMovie = mapEntityToDomain(movieEntity)
+        assertEquals(mockedMovie, movie)
+    }
 
-@Test fun emailValidator_InvalidEmailNoUsername_ReturnsFalse4() {
-    assertTrue(mapNothingSessionToDomain() === Session(token = ""))
+    @Test
+    fun mapNothingSessionToDomain_EqualTo_MovieEntity() {
+        assertEquals(mapNothingSessionToDomain(), Session(token = ""))
+    }
 }
