@@ -19,5 +19,4 @@ The representation of this app covered the required given task which are:
 - Using pagination in home screen
 
 # Screenshots or GIFS
-https://im6.ezgif.com/tmp/ezgif-6-7f91e1e4a521.gif
-
+![BNCMovieApp](https://user-images.githubusercontent.com/33171451/143823679-b0f02e50-f17f-4012-8826-3bbd5407d9ba.gif)
